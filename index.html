@@ -8,12 +8,86 @@ function computer(){
 	else if (x==2){
 		return 'paper';
 	}
-	else(x==3){
+	else if(x==3){
 		return 'scissor';
 	}
 }
-var playerSelection=prompt("Your Selection");
-var computerPlay=computer();
+
+
+
 function playRound(playerSelection,computerPlay){
 
+var computerPlay=computer();
+var playerSelection=prompt("Your Selection");
+
+ 
+ if(playerSelection.toLowerCase()=='rock' && computerPlay=='rock'){
+ 	return 'match Tied';
+ }
+
+ else if(playerSelection.toLowerCase()=='rock' && computerPlay=='paper'){
+ 	return 'You Lose!';
+ }
+
+else if(playerSelection.toLowerCase()=='rock' && computerPlay=='scissor'){
+ 	return 'You Won';
+ }
+
+else if(playerSelection.toLowerCase()=='paper' && computerPlay=='rock'){
+ 	return 'You Won';
+ }
+
+else if(playerSelection.toLowerCase()=='paper' && computerPlay=='paper'){
+ 	return 'match Tied';
+ }
+
+else if(playerSelection.toLowerCase()=='paper' && computerPlay=='scissor'){
+ 	return 'You Lose!';
+ }
+
+else if(playerSelection.toLowerCase()=='scissor' && computerPlay=='rock'){
+ 	return 'you Lose!';
+ }
+
+else if(playerSelection.toLowerCase()=='scissor' && computerPlay=='paper'){
+ 	return 'you won';
+ }
+
+else if(playerSelection.toLowerCase()=='scissor' && computerPlay=='scissor'){
+ 	return 'match Tied';
+ }
+ else{
+ 	return 'Invalid Input';
+ }
+
 }
+
+
+function game(){
+	var playerScore=0;
+	var computerScore=0;
+	while(playerScore<5 || computerScore<5){
+		playRound();
+		if (playRound().toLowerCase()=='you won')
+			playerScore++;
+		else if(playRound().toLowerCase()=='you lose!')
+			computerScore++;
+		else{
+			playerScore++;
+			computerScore++;
+		}
+		console.log('Your Score=' + playerScore);
+		console.log('Computer\'s Score=' + computerScore);
+
+	}
+	if(playerScore>computerScore){
+		return 'Hey You Won';
+	}
+	else{
+		return 'You Lost';
+	}
+}
+
+console.log(game());
+
+</script>
